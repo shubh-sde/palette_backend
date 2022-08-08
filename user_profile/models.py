@@ -36,6 +36,7 @@ User = settings.AUTH_USER_MODEL
 
 class Profile(models.Model):
     user = models.ForeignKey(User,default=1,null=True,on_delete=models.SET_NULL)
+    profile_pic = models.URLField(null=True)
     name = models.CharField(max_length=80)
     age = models.DecimalField(max_digits=3,decimal_places=0)
     gender = models.CharField(max_length=20)
@@ -44,6 +45,5 @@ class Profile(models.Model):
     work_experience = models.OneToOneField(WorkExperience,on_delete=models.CASCADE)
     interest = models.ManyToManyField(Interests)
     social_links = models.OneToOneField(SocialLinks,on_delete=models.CASCADE)
-
     
     objects = UserManager()
